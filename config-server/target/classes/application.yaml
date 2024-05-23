@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: composite
+  cloud:
+    config:
+      server:
+        prefix: /config
+        bootstrap: false
+        overrides:
+          test: override
+        composite:
+          - type: native
+            order: 2
+            searchLocations: classpath:/primary/{application}
+          - type: native
+            order: 3
+            searchLocations: classpath:/test-default/{application}

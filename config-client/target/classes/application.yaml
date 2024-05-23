@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: config-client
+  profiles:
+    active: def
+  cloud:
+    config:
+      label: main
+  config:
+    import: configserver:http://localhost:8081/config/?fail-fast=true
